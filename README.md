@@ -1,0 +1,1 @@
+## Template as a bootstrap app with Auth modules and main navigation functionality
