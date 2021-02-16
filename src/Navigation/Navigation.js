@@ -1,30 +1,10 @@
 import React from 'react'
 import { NavigationContainer } from '@react-navigation/native'
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { createStackNavigator } from '@react-navigation/stack';
-import {  HomeScreen, LoginScreen, ProfileScreen, RegisterScreen, SplashScreen} from '../Screens'
-import Icon from 'react-native-vector-icons/AntDesign';
+import { LoginScreen, RegisterScreen, SplashScreen } from '../Screens'
+import BottomTabBar from './BottomTabBar'
 
-const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator()
-
-
-const HomeStack = () => (
-  <Stack.Navigator>
-    <Stack.Screen name="Home" component={HomeScreen} />
-  </Stack.Navigator>
-)
-
-
-
-
-const ProfileStack = () => (
-  <Stack.Navigator>
-    <Stack.Screen name="Profile" component={ProfileScreen} />
-  </Stack.Navigator>
-)
-
-
 
 const AuthStack = () => (
   <Stack.Navigator headerMode="none" initialRouteName="Splash">
@@ -32,37 +12,6 @@ const AuthStack = () => (
     <Stack.Screen name="Register" component={RegisterScreen} />
   </Stack.Navigator>
 )
-
-function TabNavigator() {
-  return (
-    <Tab.Navigator
-      screenOptions={({ route }) => ({
-
-        tabBarIcon: ({ focused, color, size }) => {
-          let iconName
-          if (route.name === 'Home') {
-            iconName = focused
-              ? 'home'
-              : 'home';
-          } else if (route.name === 'Profile') {
-            iconName = focused ? 'user' : 'user'
-          }
-          return <Icon color={focused ? '#09B6CC' : '#333'} name={iconName} size={30} />
-        },
-      })}
-      tabBarOptions={{
-        labelStyle: { display: 'none' },
-        activeTintColor: 'tomato',
-        inactiveTintColor: 'gray',
-      }}
-    >
-      <Tab.Screen name="Home" component={HomeStack} />
-      <Tab.Screen name="Profile" component={ProfileStack} />
-    </Tab.Navigator>
-  );
-}
-
-
 
 const RootNavigator = () => {
   return (
@@ -73,7 +22,7 @@ const RootNavigator = () => {
       }} component={AuthStack} />
       <Stack.Screen name="Main" options={{
         animationEnabled: false
-      }} component={TabNavigator} />
+      }} component={BottomTabBar} />
     </Stack.Navigator>
   )
 }
