@@ -13,11 +13,9 @@ const Splash = ({ navigation }) => {
 
 
   return (
-    <>
-      <View style={styles.logoContainer}>
-        <Text style={styles.logoStyle}>Book Store</Text>
-      </View>
-    </>
+    <View style={styles.logoContainer}>
+      <Text style={styles.logoStyle}>App Name</Text>
+    </View>
   );
 };
 
